@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Website</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 1em;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: not-allowed;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4CAF50;
+            cursor: not-allowed;
+        }
+
+        .circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: absolute;
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Cool Website</h1>
+    </header>
+
+    <section>
+        <h2>Welcome to the Cool Website!</h2>
+        <img src="picture.jpg" alt="Cool Picture" style="max-width: 100%; border-radius: 8px;">
+        <p>This is a simple and cool static website created using pure HTML.</p>
+        <p>Feel free to explore and enjoy!</p>
+        <button onclick="createRandomCircle()">Don't click me</button>
+        <p style="color: #999; font-style: italic;">(There is a reason!)</p>
+    </section>
+
+    <footer>
+        &copy; 2024 Saied Omar. All rights reserved.
+    </footer>
+
+    <script>
+        let circleSize = 30;
+
+        function createRandomCircle() {
+            const section = document.querySelector('section');
+            const circle = document.createElement('div');
+            circle.className = 'circle';
+            const xPos = Math.random() * (section.clientWidth - circleSize);
+            const yPos = Math.random() * (section.clientHeight - circleSize);
+            const randomColor = getRandomColor();
+            circle.style.left = `${xPos}px`;
+            circle.style.top = `${yPos}px`;
+            circle.style.width = `${circleSize}px`;
+            circle.style.height = `${circleSize}px`;
+            circle.style.backgroundColor = randomColor;
+            section.appendChild(circle);
+
+            // Increase circle size for the next click
+            circleSize += 10;
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+
+</html>
